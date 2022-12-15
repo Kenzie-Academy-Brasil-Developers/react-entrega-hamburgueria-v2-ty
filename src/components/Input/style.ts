@@ -5,6 +5,8 @@ export const StyledFieldset = styled.fieldset`
   flex-direction: column;
   gap: 0.5rem;
 
+  position: relative;
+
   label {
     font-size: 14px;
     font-weight: 500;
@@ -36,5 +38,15 @@ export const StyledFieldset = styled.fieldset`
 
   input::placeholder {
     color: var(--color-grey3);
+  }
+
+  span {
+    font-size: 0.75rem;
+
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+
+    color: var(--secondary-color100);
   }
 `;

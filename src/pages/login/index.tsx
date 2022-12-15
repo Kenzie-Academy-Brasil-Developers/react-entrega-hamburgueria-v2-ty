@@ -4,6 +4,8 @@ import logo from "../../img/logo.svg";
 import { MediumButton } from "../../components/Button/Medium";
 import { FiShoppingBag } from "react-icons/fi";
 import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 interface iLoginData {
   email: string;
@@ -12,7 +14,16 @@ interface iLoginData {
 
 export function LoginPage() {
 
-  const { register, handleSubmit } = useForm<iLoginData>();
+  const loginSchema = yup.object().shape({
+    email: yup.string().required("Email obrigatório*").email("Email inválido"),
+
+    password: yup.string().required("Senha obrigatória*"),
+  });
+
+  const { register, handleSubmit, formState: { errors } } = useForm<iLoginData>({
+    mode: "onChange",
+    resolver: yupResolver(loginSchema)
+  });
 
   return (
     <StyledDiv>
@@ -42,6 +53,11 @@ export function LoginPage() {
             id="email"
             placeholder="Digite seu email"
             {...register("email")}
+            error={
+              errors.email?.message && (
+                <span aria-label="error">{errors.email.message}</span>
+              )
+            }
           />
           <Input
             type="password"
@@ -49,6 +65,11 @@ export function LoginPage() {
             id="password"
             placeholder="Digite sua senha"
             {...register("password")}
+            error={
+              errors.password?.message && (
+                <span aria-label="error">{errors.password.message}</span>
+              )
+            }
           />
           <MediumButton type="submit" btnGreen>
             Logar

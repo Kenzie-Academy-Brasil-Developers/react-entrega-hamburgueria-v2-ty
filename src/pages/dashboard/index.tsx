@@ -8,33 +8,22 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { MediumButton } from "../../components/Button/Medium";
 import { Card } from "../../components/ProductCard";
 import { iProductsType } from "../../contexts/UserContext";
-import { toast } from "react-toastify";
+import { CartContext } from "../../contexts/CartContext";
 
 export function DashboardPage() {
 
   const { products, logout } = useContext(UserContext);
-  const [value, setValue] = useState("");
+  const [searchItem, setSearchItem] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([] as iProductsType[]);
-  const [currentSale, setCurrentSale] = useState([] as iProductsType[]);
+  const { addCart, currentSale } = useContext(CartContext)
 
   function filterProducts() {
 
     setFilteredProducts(
       products.filter(({ name }) =>
-        name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+        name.toLocaleLowerCase().includes(searchItem.toLocaleLowerCase())
       )
     );
-  }
-
-  function addCart(item: iProductsType) {
-
-    if (!currentSale.find((element) => element.id === item.id)) {
-
-      setCurrentSale([...currentSale, item]);
-    } else {
-        
-      toast.warn("Não é possível adicionar o mesmo item ao carrinho");
-    }
   }
 
   return (
@@ -43,8 +32,8 @@ export function DashboardPage() {
         <div className="container">
           <img src={logo} alt="Logo do site Burguer Kenzie" />
           <InputSearch
-            value={value}
-            onChange={(event) => setValue(event.target.value)}
+            value={searchItem}
+            onChange={(event) => setSearchItem(event.target.value)}
             onClick={() => filterProducts()}
           />
           <div>

@@ -1,4 +1,6 @@
-export interface iButtonProps {
+import { InputHTMLAttributes } from "react";
+
+export interface iButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
   type?: "submit" | "reset" | "button";
   btnGreen?: boolean;
   onClick?: () => void;

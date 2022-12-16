@@ -1,5 +1,5 @@
 import { Input } from "../../components/Input";
-import { StyledDiv, StyledLink as Link } from "./style";
+import { StyledMain, StyledLink as Link } from "./style";
 import { MediumButton } from "../../components/Button/Medium";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,12 +18,10 @@ export function LoginPage() {
   const { login } = useContext(UserContext)
 
   return (
-    <StyledDiv>
-      <main className="container">
+    <StyledMain>
+      <div className="login_container">
         <BKCard />
-        <form
-          onSubmit={handleSubmit(login)}
-        >
+        <form onSubmit={handleSubmit(login)}>
           <h2 className="title3">Login</h2>
           <Input
             type="email"
@@ -57,7 +55,7 @@ export function LoginPage() {
           </p>
           <Link to="/register">Cadastrar</Link>
         </form>
-      </main>
-    </StyledDiv>
+      </div>
+    </StyledMain>
   );
 }

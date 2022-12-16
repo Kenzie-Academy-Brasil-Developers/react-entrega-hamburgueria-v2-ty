@@ -9,7 +9,7 @@ export const StyledMain = styled.main`
 
   background-color: var(--color-white);
 
-  .login_container {
+  .container {
     height: 100%;
 
     display: flex;
@@ -35,38 +35,16 @@ export const StyledMain = styled.main`
     max-width: 400px;
   }
 
-  form p {
-    text-align: center;
+  form > div {
+    display: flex;
+    justify-content: space-between;
   }
 `;
 
 export const StyledLink = styled(Link)`
-  cursor: pointer;
-
-  color: var(--color-grey4);
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: var(--color-grey1);
-
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  font-size: 0.875rem;
-  text-decoration: none;
-
-  border-radius: var(--default-radius);
-
-  height: 40px;
-  min-width: 60px;
-
-  padding: 0 20px;
-
-  transition: .5s;
+  color: var(--color-grey3);
 
   :hover {
-    background-color: var(--color-grey4);
-    color: var(--color-grey1);
+    color: var(--primary-color100);
   }
 `;

@@ -4,26 +4,19 @@ import logo from "../../img/logo.svg";
 import { MediumButton } from "../../components/Button/Medium";
 import { FiShoppingBag } from "react-icons/fi";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "../../validations/loginSchema";
+import { iLoginData, UserContext } from "../../contexts/UserContext";
+import { useContext } from "react";
 
-interface iLoginData {
-  email: string;
-  password: string;
-}
-
-export function LoginPage() {
-
-  const loginSchema = yup.object().shape({
-    email: yup.string().required("Email obrigatório*").email("Email inválido"),
-
-    password: yup.string().required("Senha obrigatória*"),
-  });
+export function LoginPage() {  
 
   const { register, handleSubmit, formState: { errors } } = useForm<iLoginData>({
     mode: "onChange",
     resolver: yupResolver(loginSchema)
   });
+
+  const { login } = useContext(UserContext)
 
   return (
     <StyledDiv>
@@ -44,7 +37,7 @@ export function LoginPage() {
         </div>
         <form
           className="login_container"
-          onSubmit={handleSubmit((data) => console.log(data))}
+          onSubmit={handleSubmit(login)}
         >
           <h2 className="title3">Login</h2>
           <Input

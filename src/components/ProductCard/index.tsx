@@ -4,9 +4,10 @@ import { iProductsType } from "../../contexts/UserContext";
 
 interface iItem {
   item: iProductsType;
+  onClick?: () => void
 }
 
-export function Card({ item, ...rest }: iItem) {
+export function Card({ item, onClick }: iItem) {
 
   return (
     <StyledCard>
@@ -22,7 +23,7 @@ export function Card({ item, ...rest }: iItem) {
             currency: "BRL",
           })}
         </p>
-        <MediumButton btnGreen {...rest}>
+        <MediumButton btnGreen onClick={onClick}>
           Adicionar
         </MediumButton>
       </div>

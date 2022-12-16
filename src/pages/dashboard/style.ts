@@ -23,36 +23,55 @@ export const StyledHeader = styled.header`
     gap: 1rem;
   }
 
-  .container div:last-child {
+  .container > div:last-child {
     display: flex;
     justify-content: space-between;
+
+    width: 100%;
   }
 
-  .container div:last-child button {
+  .container > div:last-child > div {
+    position: relative;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .3rem;
-  }
-
-  .container div:last-child button:first-child {
     width: 65%;
   }
 
-  .container div:last-child button:last-child {
-    width: 30%;
+  .container > div:last-child > div button {
+    width: 100%;
+  }
+
+  img {
+    width: 140px;
+  }
+
+  .cart_length {
+    background-color: red;
+    min-width: 20px;
+    height: 30px;
+
+    padding: 0 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--color-white);
+
+    border-radius: 6px;
+
+    position: absolute;
+    top: -10px;
+    right: -10px;
   }
 
   .container div:last-child button:last-child {
     background-color: var(--color-grey2);
 
+    width: 30%;
+
     :hover {
       background-color: var(--color-grey4);
     }
-  }
-
-  img {
-    width: 140px;
   }
 `;
 
@@ -63,4 +82,4 @@ export const StyledMain = styled.main`
 
     overflow-x: auto;
   }
-`
+`;

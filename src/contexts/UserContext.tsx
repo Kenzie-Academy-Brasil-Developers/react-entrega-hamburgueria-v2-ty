@@ -11,7 +11,8 @@ interface iAuthContext {
   login: (userData: iLoginData) => Promise<void>;
   user: boolean;
   loadUserLoading: boolean;
-  products: iProductsType[]
+  products: iProductsType[];
+  logout: () => void
 }
 
 export interface iLoginData {
@@ -104,8 +105,14 @@ export function UserProvider({ children }: iAuthContextProps) {
     }
   }
 
+  function logout() {
+
+    localStorage.clear();
+    navigate("/login");
+  }
+
   return (
-    <UserContext.Provider value={{ login, user, loadUserLoading, products }}>
+    <UserContext.Provider value={{ login, user, loadUserLoading, products, logout }}>
       {children}
     </UserContext.Provider>
   );

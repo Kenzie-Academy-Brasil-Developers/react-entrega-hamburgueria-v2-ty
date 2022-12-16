@@ -1,13 +1,12 @@
 import { Input } from "../../components/Input";
 import { StyledDiv } from "./style";
-import logo from "../../img/logo.svg";
 import { MediumButton } from "../../components/Button/Medium";
-import { FiShoppingBag } from "react-icons/fi";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../validations/loginSchema";
 import { iLoginData, UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
+import { BKCard } from "../../components/BKCard";
 
 export function LoginPage() {  
 
@@ -20,23 +19,9 @@ export function LoginPage() {
 
   return (
     <StyledDiv>
-      <div className="container">
-        <div className="infos">
-          <img src={logo} alt="Logo do site Burguer Kenzie" />
-          <div>
-            <div className="bag_square">
-              <span>
-                <FiShoppingBag />
-              </span>
-            </div>
-            <p className="headline">
-              A vida é como um sanduíche, é preciso recheá-la com os melhores
-              ingredientes.
-            </p>
-          </div>
-        </div>
+      <main className="container">
+        <BKCard />
         <form
-          className="login_container"
           onSubmit={handleSubmit(login)}
         >
           <h2 className="title3">Login</h2>
@@ -72,7 +57,7 @@ export function LoginPage() {
           </p>
           <MediumButton type="button">Cadastrar</MediumButton>
         </form>
-      </div>
+      </main>
     </StyledDiv>
   );
 }

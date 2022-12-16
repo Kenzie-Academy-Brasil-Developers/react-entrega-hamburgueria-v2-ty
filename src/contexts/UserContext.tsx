@@ -11,7 +11,7 @@ interface iAuthContext {
   login: (userData: iLoginData) => Promise<void>;
   user: boolean;
   loadUserLoading: boolean;
-  products: iVerifyToken[]
+  products: iProductsType[]
 }
 
 export interface iLoginData {
@@ -29,7 +29,9 @@ interface iData {
   user: iUser;
 }
 
-interface iVerifyToken {
+type iProductsArr = iProductsType[]
+
+interface iProductsType {
   id: number
   name: string
   category: string
@@ -44,7 +46,7 @@ export function UserProvider({ children }: iAuthContextProps) {
   const navigate = useNavigate();
   const [user, setUser] = useState(false)
   const [loadUserLoading, setLoadUserLoading] = useState(true);
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([] as iProductsArr)
 
   useEffect(() => {
 
@@ -90,6 +92,10 @@ export function UserProvider({ children }: iAuthContextProps) {
       localStorage.setItem("@user_token", data.accessToken);
       api.defaults.headers.common.authorization = `Bearer ${data.accessToken}`
 
+      const { data: products } = await api.get<iProductsArr>("products");
+
+      setUser(true)
+      setProducts(products)
       navigate("/dashboard");
     } catch (error) {
 

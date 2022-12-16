@@ -31,7 +31,7 @@ interface iData {
 
 type iProductsArr = iProductsType[]
 
-interface iProductsType {
+export interface iProductsType {
   id: number
   name: string
   category: string

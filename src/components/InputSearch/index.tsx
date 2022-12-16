@@ -1,20 +1,18 @@
+import { InputHTMLAttributes } from "react";
 import { MediumButton } from "../Button/Medium";
 import { StyledContainer } from "./style"
 
-interface iInputSearchProps {
+interface iInputSearchProps extends InputHTMLAttributes<HTMLInputElement> {
   onClick?: () => void;
-  value?: string;
-  onChange?: () => void;
 }
 
-export function InputSearch({ value, onChange, onClick }: iInputSearchProps) {
+export function InputSearch({ onClick, ...rest }: iInputSearchProps) {
   return (
     <StyledContainer>
       <input
         type="text"
         placeholder="Digitar Pesquisa"
-        value={value}
-        onChange={onChange}
+        {...rest}
       />
       <MediumButton btnGreen onClick={onClick}>
         Pesquisar

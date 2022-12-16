@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledDiv = styled.div`
@@ -36,5 +37,36 @@ export const StyledDiv = styled.div`
 
   form p {
     text-align: center;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  cursor: pointer;
+
+  color: var(--color-grey4);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-grey1);
+
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-decoration: none;
+
+  border-radius: var(--default-radius);
+
+  height: 40px;
+  min-width: 60px;
+
+  padding: 0 20px;
+
+  transition: .5s;
+
+  :hover {
+    background-color: var(--color-grey4);
+    color: var(--color-grey1);
   }
 `;

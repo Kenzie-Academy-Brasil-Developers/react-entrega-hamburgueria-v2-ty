@@ -7,6 +7,7 @@ export function AllRoutes() {
   return (
     <Routes>
       <Route path="login" element={<LoginPage />} />
+      <Route path="register" element={<h1>Registro</h1>} />
       <Route element={<ProtectedRoutes />}>
         <Route path="dashboard" element={<DashboardPage />} />
       </Route>

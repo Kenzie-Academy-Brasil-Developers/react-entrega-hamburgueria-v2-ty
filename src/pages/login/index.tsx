@@ -1,5 +1,5 @@
 import { Input } from "../../components/Input";
-import { StyledDiv } from "./style";
+import { StyledDiv, StyledLink as Link } from "./style";
 import { MediumButton } from "../../components/Button/Medium";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -55,7 +55,7 @@ export function LoginPage() {
           <p className="body">
             Crie sua conta para saborear muitas delícias e matar sua fome!
           </p>
-          <MediumButton type="button">Cadastrar</MediumButton>
+          <Link to="/register">Cadastrar</Link>
         </form>
       </main>
     </StyledDiv>

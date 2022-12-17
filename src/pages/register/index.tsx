@@ -1,8 +1,8 @@
 import { StyledMain, StyledLink as Link } from "./style";
-import { BKCard } from "../../components/BKCard";
+import { BKCard } from "../../components/CardAside";
 import { Input } from "../../components/Input";
 import { MediumButton } from "../../components/Button/Medium";
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../../validations/registerSchema";
 import { api } from "../../services/api";
@@ -18,14 +18,14 @@ interface iRegisterData {
 }
 
 interface iStatus {
-  status: number
+  status: number;
 }
 
 export function RegisterPage() {
 
-  const navigate = useNavigate()
-  const [loading, setLoading] = useState(false)
-  
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
   const { register, handleSubmit, formState: { errors }, reset } = useForm<iRegisterData>({
     mode: "onChange",
     resolver: yupResolver(registerSchema),
@@ -35,23 +35,22 @@ export function RegisterPage() {
 
     try {
 
-      setLoading(true)
-      const { status } = await api.post<iStatus>("users", userData)
+      setLoading(true);
+      const { status } = await api.post<iStatus>("users", userData);
 
       if (status === 201) {
 
-        reset()
-        toast.success("Conta criada com sucesso")
-        setTimeout(() => navigate("/login"), 4000)
+        reset();
+        toast.success("Conta criada com sucesso");
+        setTimeout(() => navigate("/login"), 4000);
       }
-      
     } catch (error) {
-      
-      console.error(error)
-      toast.error("Email já cadastrado")
-    } finally {
 
-      setLoading(false)
+      console.error(error);
+      toast.error("Email já cadastrado");
+    } finally {
+      
+      setLoading(false);
     }
   }
 
@@ -112,7 +111,9 @@ export function RegisterPage() {
             {...register("confirm_password")}
             error={
               errors.confirm_password?.message && (
-                <span aria-label="error">{errors.confirm_password.message}</span>
+                <span aria-label="error">
+                  {errors.confirm_password.message}
+                </span>
               )
             }
           />

@@ -12,6 +12,7 @@ interface iAuthContext {
   user: boolean;
   loadUserLoading: boolean;
   products: iProductsType[];
+  loading: boolean;
   logout: () => void
 }
 
@@ -48,6 +49,7 @@ export function UserProvider({ children }: iAuthContextProps) {
   const [user, setUser] = useState(false)
   const [loadUserLoading, setLoadUserLoading] = useState(true);
   const [products, setProducts] = useState([] as iProductsArr)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
 
@@ -88,6 +90,7 @@ export function UserProvider({ children }: iAuthContextProps) {
 
     try {
 
+      setLoading(true)
       const { data } = await api.post<iData>("login", userData);
 
       localStorage.setItem("@user_token", data.accessToken);
@@ -102,6 +105,9 @@ export function UserProvider({ children }: iAuthContextProps) {
 
       console.error(error);
       toast.error("Email ou senha incorreto");
+    } finally {
+
+      setLoading(false)
     }
   }
 
@@ -112,7 +118,7 @@ export function UserProvider({ children }: iAuthContextProps) {
   }
 
   return (
-    <UserContext.Provider value={{ login, user, loadUserLoading, products, logout }}>
+    <UserContext.Provider value={{ login, user, loadUserLoading, products, loading, logout }}>
       {children}
     </UserContext.Provider>
   );

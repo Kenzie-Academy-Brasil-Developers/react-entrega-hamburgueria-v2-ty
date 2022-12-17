@@ -6,20 +6,23 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../validations/loginSchema";
 import { iLoginData, UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
-import { BKCard } from "../../components/BKCard";
+import { BKCard } from "../../components/CardAside";
 
-export function LoginPage() {  
-
-  const { register, handleSubmit, formState: { errors } } = useForm<iLoginData>({
+export function LoginPage() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iLoginData>({
     mode: "onChange",
-    resolver: yupResolver(loginSchema)
+    resolver: yupResolver(loginSchema),
   });
 
-  const { login } = useContext(UserContext)
+  const { login, loading } = useContext(UserContext);
 
   return (
     <StyledMain>
-      <div className="login_container">
+      <div className="container">
         <BKCard />
         <form onSubmit={handleSubmit(login)}>
           <h2 className="title3">Login</h2>
@@ -48,7 +51,7 @@ export function LoginPage() {
             }
           />
           <MediumButton type="submit" btnGreen>
-            Logar
+            {loading ? "Logando" : "Logar"}
           </MediumButton>
           <p className="body">
             Crie sua conta para saborear muitas delícias e matar sua fome!

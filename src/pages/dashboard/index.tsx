@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { StyledDiv, StyledHeader, StyledMain } from "./style";
 import logo from "../../img/logo.svg";
@@ -7,24 +7,13 @@ import { FaShoppingCart } from "react-icons/fa";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { MediumButton } from "../../components/Button/Medium";
 import { Card } from "../../components/ProductCard";
-import { iProductsType } from "../../contexts/UserContext";
 import { CartContext } from "../../contexts/CartContext";
+import { CartModal } from "../../components/CartModal";
 
 export function DashboardPage() {
 
   const { products, logout } = useContext(UserContext);
-  const [searchItem, setSearchItem] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState([] as iProductsType[]);
-  const { addCart, currentSale } = useContext(CartContext)
-
-  function filterProducts() {
-
-    setFilteredProducts(
-      products.filter(({ name }) =>
-        name.toLocaleLowerCase().includes(searchItem.toLocaleLowerCase())
-      )
-    );
-  }
+  const { filteredProducts, searchItem, setSearchItem, addCart, currentSale, filterProducts, modal, setModal } = useContext(CartContext)
 
   return (
     <StyledDiv>
@@ -38,7 +27,7 @@ export function DashboardPage() {
           />
           <div>
             <div>
-              <MediumButton btnGreen>
+              <MediumButton btnGreen onClick={() => setModal(true)}>
                 Ver carrinho <FaShoppingCart />
               </MediumButton>
               <div className="cart_length">
@@ -62,6 +51,7 @@ export function DashboardPage() {
               ))}
         </ul>
       </StyledMain>
+      {modal ? <CartModal /> : null}
     </StyledDiv>
   );
 }

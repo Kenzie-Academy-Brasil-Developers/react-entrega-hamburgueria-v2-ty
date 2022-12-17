@@ -9,7 +9,7 @@ export const StyledMain = styled.main`
 
   background-color: var(--color-white);
 
-  .login_container {
+  .container {
     height: 100%;
 
     display: flex;

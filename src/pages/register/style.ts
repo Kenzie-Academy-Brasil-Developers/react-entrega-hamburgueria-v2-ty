@@ -39,6 +39,13 @@ export const StyledMain = styled.main`
     display: flex;
     justify-content: space-between;
   }
+
+  @media (min-width: 768px) {
+    .container {
+      flex-direction: row;
+      gap: 4rem;
+    }
+  }
 `;
 
 export const StyledLink = styled(Link)`

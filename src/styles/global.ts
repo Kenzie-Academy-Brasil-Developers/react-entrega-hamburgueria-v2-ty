@@ -60,4 +60,13 @@ button {
     
     margin: 0 auto;
 }
+
+@media (min-width: 1024px) {
+    .container {
+    width: 90%;
+    max-width: 75rem;
+    
+    margin: 0 auto;
+}
+}
 `;

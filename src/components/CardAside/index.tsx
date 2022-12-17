@@ -1,9 +1,10 @@
 import { FiShoppingBag } from "react-icons/fi";
 import logo from "../../img/logo.svg";
+import detail from "../../img/detail.svg";
 import { StyledDiv } from "./style";
 
 export function BKCard() {
-
+  
   return (
     <StyledDiv>
       <img src={logo} alt="Logo do site Burguer Kenzie" />
@@ -18,6 +19,7 @@ export function BKCard() {
           ingredientes.
         </p>
       </div>
+      <img src={detail} alt="Detalhe do aside" />
     </StyledDiv>
   );
 }

@@ -38,6 +38,14 @@ export const StyledMain = styled.main`
   form p {
     text-align: center;
   }
+
+  @media (min-width: 768px) {
+
+    .container {
+      flex-direction: row-reverse;
+      gap: 4rem;
+    }
+  }
 `;
 
 export const StyledLink = styled(Link)`

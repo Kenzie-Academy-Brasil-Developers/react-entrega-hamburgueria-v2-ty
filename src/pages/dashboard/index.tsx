@@ -20,23 +20,25 @@ export function DashboardPage() {
       <StyledHeader>
         <div className="container">
           <img src={logo} alt="Logo do site Burguer Kenzie" />
-          <InputSearch
-            value={searchItem}
-            onChange={(event) => setSearchItem(event.target.value)}
-            onClick={() => filterProducts()}
-          />
-          <div>
-            <div>
-              <MediumButton btnGreen onClick={() => setModal(true)}>
-                Ver carrinho <FaShoppingCart />
-              </MediumButton>
-              <div className="cart_length">
-                <p>{currentSale.length}</p>
+          <div className="header_items">
+            <InputSearch
+              value={searchItem}
+              onChange={(event) => setSearchItem(event.target.value)}
+              onClick={() => filterProducts()}
+            />
+            <div className="header_btns">
+              <div className="header_btns_cart">
+                <MediumButton btnGreen onClick={() => setModal(true)}>
+                  Ver carrinho <FaShoppingCart />
+                </MediumButton>
+                <div className="cart_length">
+                  <p>{currentSale.length}</p>
+                </div>
               </div>
+              <MediumButton onClick={() => logout()}>
+                Sair <RiLogoutBoxRLine />
+              </MediumButton>
             </div>
-            <MediumButton onClick={() => logout()}>
-              Sair <RiLogoutBoxRLine />
-            </MediumButton>
           </div>
         </div>
       </StyledHeader>

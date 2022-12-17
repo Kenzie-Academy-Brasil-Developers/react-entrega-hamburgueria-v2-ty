@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const StyledDiv = styled.div`
   box-sizing: border-box;
 
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 
   background-color: var(--color-white);
 
@@ -23,25 +23,41 @@ export const StyledHeader = styled.header`
     gap: 1rem;
   }
 
-  .container > div:last-child {
+  img {
+    width: 140px;
+  }
+
+  .header_items {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem;
 
     width: 100%;
   }
 
-  .container > div:last-child > div {
-    position: relative;
+  .header_btns {
     display: flex;
+    justify-content: space-between;
+  }
+
+  .header_btns > button {
+    background-color: var(--color-grey2);
+
+    width: 30%;
+
+    :hover {
+      background-color: var(--color-grey4);
+    }
+  }
+
+  .header_btns_cart {
+    position: relative;
+
     width: 65%;
   }
 
-  .container > div:last-child > div button {
+  .header_btns_cart button {
     width: 100%;
-  }
-
-  img {
-    width: 140px;
   }
 
   .cart_length {
@@ -64,22 +80,67 @@ export const StyledHeader = styled.header`
     right: -10px;
   }
 
-  .container div:last-child button:last-child {
-    background-color: var(--color-grey2);
+  @media (min-width: 1024px) {
+    .container {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-    width: 30%;
+    .header_items {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
 
-    :hover {
-      background-color: var(--color-grey4);
+      width: 700px;
+    }
+
+    .header_btns {
+      width: 400px;
+    }
+
+    .header_btns > button {
+      width: 33%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header_btns_cart {
+      position: relative;
+
+      width: 60%;
+    }
+
+    .header_btns_cart > button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header_btns_cart button {
+      width: 100%;
     }
   }
 `;
 
 export const StyledMain = styled.main`
+  padding-bottom: 16px;
+
   ul {
     display: flex;
     gap: 1rem;
 
     overflow-x: auto;
+  }
+
+  @media (min-width: 1024px) {
+    min-width: 100%;
+
+    ul {
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
   }
 `;

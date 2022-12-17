@@ -5,13 +5,17 @@ export const StyledDiv = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 
   width: 100%;
   max-width: 400px;
 
   img {
     width: 200px;
+  }
+
+  img:last-child {
+    display: none;
   }
 
   div {
@@ -41,5 +45,11 @@ export const StyledDiv = styled.div`
     font-size: 24px;
 
     border-radius: var(--default-radius);
+  }
+
+  @media (min-width: 768px) {
+    img:last-child {
+      display: block;
+    }
   }
 `;
